@@ -4,14 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <div class="nav">
+        <div class="logo">Интернет-магазин</div>
+        <form action="#" class="nav-search">
+            <input type="text" class="input-search">
+            <button class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
         <button class="cartButton">Корзина</button>
+        <div class="goods-list"></div>
+        </div>
     </div>
     <div class="products">
 
+    </div>
+    <div class="footer">
+        <form action="#" class="feedback">
+            <h2>Обратная связь</h2>
+            <div class="feedback-wrap">
+                <input type="text" class="feedback-name" placeholder="Имя" required>
+                <input type="tel" class="feedback-phone" placeholder="Телефон" required>
+                <input type="email" class="feedback-mail" placeholder="E-mail" required>
+                <button class="feedback-button">Отправить</button>
+            </div>
+            <p>* Все поля обязательны для заполнения</p>
+        </form>
     </div>
     <script src="main.js"></script>
 </body>
