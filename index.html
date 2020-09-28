@@ -3,16 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Store</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <div class="nav">
-        <button class="cartButton">Корзина</button>
-    </div>
-    <div class="products">
+    <div id="app">
+        <div class="nav">
+            <div class="logo">
+                Интернет-магазин
+            </div>
+            <form action="#" class="nav-search">
+                <input type="text" v-model="searchLine" class="input-search">
+                <button @click="FilterGoods" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <button @click="isVisibleCart" class="cartButton">
+                Корзина
+            </button>
+            <div class="shopCart">
+                <div class="cartTitles">
+                    <div class="tNum">#</div>
+                    <div class="tName">Наименование</div>
+                    <div class="tPrice">Цена</div>
+                    <div class="tQuantity">Количество</div>
+                    <div class="tTrash">Удалить</div>
+                </div>
+                <div class="cartProds">
+                    <div class="prodNum"></div>
+                    <div class="prodName"></div>
+                    <div class="prodPrice"></div>
+                    <div class="prodQuantity"></div>
+                    <div class="prodTrash"></div>
+                </div>
+            </div>
+        </div>
 
+        <p>{{ searchLine }}</p>
+
+        <main>
+            <div class="goods-list">
+                <div class="goods-item" v-for="good in filteredGoods">
+                    <h3>{{ good.product_name }}</h3>
+                    <p>{{ good.price }}</p>
+                </div>
+            </div>
+        </main>
+
+        <div class="footer">
+            <form action="#" class="feedback">
+                <h2>Обратная связь</h2>
+                <div class="feedback-wrap">
+                    <div class="input-wrap">
+                        <input type="text" class="feedback-name" placeholder="Имя">
+                    </div>
+                    <div class="input-wrap">
+                        <input type="tel" class="feedback-phone" placeholder="Телефон">
+                    </div>
+                    <div class="input-wrap">
+                        <input type="email" class="feedback-mail" placeholder="E-mail">
+                    </div>
+                    <div class="input-wrap">
+                        <textarea name="name" rows="1" cols="30" class="feedback-text" placeholder="Введите сообщение"></textarea>
+                    </div>
+                    <button class="feedback-button">Отправить</button>
+                </div>
+                <p>* Все поля обязательны для заполнения</p>
+            </form>
+        </div>
     </div>
-    <script src="main.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
