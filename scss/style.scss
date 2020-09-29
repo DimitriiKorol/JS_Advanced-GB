@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "RobotoCondensed", sans-serif;
+    font-size: 12px;
+    color: #000;
+}
+
 .nav{
-    height: 50px;
+    height: 75px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -11,18 +19,76 @@
 
     .cartButton{
         font-family: inherit;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
         padding: 5px 10px;
-        border-radius: 10px;
+        border-radius: 5px;
         color: black;
-        border: 1px solid black;
+        border: 0;
         background-color: #ffffff;
         margin-right: 25px;
         cursor: pointer;
         outline: none;
     }
 }
+
+
+.goods-list{
+    display: flex;
+    position: absolute;
+    right: 5px;
+    top: 60px;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    background-color: #ffffff;
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.goods-item {
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    h3{
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        color: black;
+    }
+
+    p{
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        color: black;
+        margin-left: 15px;
+    }
+}
+
+.cartSummary{
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    color: black;
+    margin: 15px auto;
+
+    p{
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 700;
+        color: black;
+        margin-left: 15px;
+    }
+}
+
 
 .products{
     display: flex;
@@ -38,7 +104,7 @@
     margin: 10px;
     background-color: #b8b8b8;
     text-align: right;
-    
+
     .image{
         width: auto;
         height: 190px;

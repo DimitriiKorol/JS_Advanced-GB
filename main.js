@@ -22,4 +22,9 @@ const renderProducts = (list) => {
     console.log(productList);
 };
 
+
 renderProducts(products);
+
+const list = new GoodsList();
+list.fetchGoods();
+list.render();
