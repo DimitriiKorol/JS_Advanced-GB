@@ -1,6 +1,7 @@
 let text = document.querySelector('pre').textContent;
 
-text = text.replace(/'\B/ig, '"').replace(/\B'/ig, '"');
+text1 = text.replace(/'/g, '"');
+console.log(text1);
 
-document.querySelector('pre').textContent = text;
-console.log(text);
+text2 = text.replace(/\B'|'\B/ig, '"');
+console.log(text2);
