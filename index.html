@@ -4,36 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <div class="nav">
         <div class="logo">Интернет-магазин</div>
+        <form action="#" class="navForm">
+            <input type="text" class="searchInput">
+            <button class="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
         <button class="cartButton">Корзина</button>
-        <div class="goods-list"></div>
-        <!--<div class="shopCart displayCart">
-            <div class="cartTitles">
-                <div class="tNum">#</div>
-                <div class="tName">Наименование</div>
-                <div class="tPrice">Цена</div>
-                <div class="tQuantity">Количество</div>
-                <div class="tTrash">Удалить</div>
-            </div>
-            <div class="cartProds">
-                <div class="prodNum"></div>
-                <div class="prodName"></div>
-                <div class="prodPrice"></div>
-                <div class="prodQuantity"></div>
-                <div class="prodTrash"></div>
-            </div>-->
-        </div>
+        <div class="cart-block invisible"></div>
     </div>
-    <div class="products">
 
+    <div class="products">
     </div>
-    <!--<script src="goods.js"></script>-->
 
     <script src="main.js"></script>
-    <script src="cart.js"></script>
 </body>
 </html>
