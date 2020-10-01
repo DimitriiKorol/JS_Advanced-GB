@@ -1,60 +1,78 @@
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 const app = new Vue({
     el: '#app',
+
     data: {
-        goods: [],
-        filteredGoods: [],
         searchLine: '',
+        showCart: false,
+        cartUrl: '/getBasket.json',
+        catalogUrl: '/catalogData.json',
+        products: [],
+        filtered: [],
+        cartItems: [],
+        imgCatalog: 'https://placehold.it/200x150',
+        imgCart: 'https://placehold.it/50x100',
     },
 
     methods: {
-        makeGETRequest(url, callback) {
-            const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-            var xhr;
-
-            if (window.XMLHttpRequest) {
-                xhr = new XMLHttpRequest();
-            } else if (window.ActiveXObject) {
-                xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    callback(xhr.responseText);
-                }
-            }
-            xhr.open('GET', url, true);
-            xhr.send();
+        getJson(url) {
+            return fetch(url)
+                .then(result => result.json())
+                .catch(error => {
+                    console.log(error);
+                })
         },
 
-        mounted() {
-            this.makeGETRequest(`${API_URL}/catalogData.json`, (goods) => {
-                this.goods = goods;
-                this.filteredGoods = goods;
-            });
-        },
-
-        FilterGoods() {
-            const regexp = new RegExp(value, 'i');
-            this.filtered = this.allProducts.filter(product => regexp.test(product.product_name));
-            this.allProducts.forEach(el => {
-                const block = document.querySelector(`.product-item[data-id="${el.id_product}"]`);
-                if (!this.filtered.includes(el)) {
-                    block.classList.add('invisible');
+        addProduct(product) {
+            this.getJson(`${API}/addToBasket.json`)
+            .then(data => {
+                if (data.result === 1) {
+                    let find = this.cartItems.find(el => el.id_product === product.id_product);
+                    if (find) {
+                        find.quantity++;
+                    } else {
+                        let prod = Object.assign({quantity: 1}, product);
+                        this.cartItems.push(prod);
+                    }
                 } else {
-                    block.classList.remove('invisible');
+                    alert('Error');
                 }
             })
         },
 
-        isVisibleCart() {
-            let shopCart = document.querySelector('.shopCart');
-            if (!document.querySelector('.displayCart')) {
-                shopCart.classList.add('displayCart');
-            } else {
-                shopCart.classList.remove('displayCart');
-            }
+        remove(item){
+            this.getJson(`${API}/deleteFromBasket.json`)
+                .then(data => {
+                    if (data.result === 1) {
+                        if (item.quantity > 1) {
+                            item.quantity--;
+                        } else {
+                            this.cartItems.splice(this.cartItems.indexOf(item), 1);
+                        }
+                    }
+                })
         },
+
+        FilterGoods() {
+            let regexp = new RegExp(this.searchLine, 'i');
+            this.filtered = this.products.filter(el => regexp.test(el.product_name));
+        },
+    },
+
+    mounted() {
+        this.getJson(`${API + this.cartUrl}`).then(data => {
+            for (let el of data.contents) {
+                this.cartItems.push(el);
+            }
+        });
+
+        this.getJson(`${API + this.catalogUrl}`).then(data => {
+            for (let el of data) {
+                this.products.push(el);
+                this.filtered.push(el);
+            }
+        });
     }
 });

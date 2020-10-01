@@ -1,80 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>eShop</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
+
     <div id="app">
-        <div class="nav">
+        <div class="header">
             <div class="logo">
                 Интернет-магазин
             </div>
-            <form action="#" class="nav-search">
-                <input type="text" v-model="searchLine" class="input-search">
-                <button @click="FilterGoods" class="search-btn">
+            <form action="#" class="navForm" @submit.prevent="FilterGoods">
+                <input type="text" class="searchInput" v-model="searchLine">
+                <button class="searchBtn" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <button @click="isVisibleCart" class="cartButton">
-                Корзина
-            </button>
-            <div class="shopCart">
-                <div class="cartTitles">
-                    <div class="tNum">#</div>
-                    <div class="tName">Наименование</div>
-                    <div class="tPrice">Цена</div>
-                    <div class="tQuantity">Количество</div>
-                    <div class="tTrash">Удалить</div>
-                </div>
-                <div class="cartProds">
-                    <div class="prodNum"></div>
-                    <div class="prodName"></div>
-                    <div class="prodPrice"></div>
-                    <div class="prodQuantity"></div>
-                    <div class="prodTrash"></div>
+            <button class="cartButton" type="button" @click="showCart = !showCart">Корзина</button>
+            <div class="cart-block" v-show="showCart">
+                <p v-if="!cartItems.length">Корзина пуста</p>
+                <div class="cart-item" v-for="item of cartItems" :key="item.id_product">
+                    <div class="product-bio">
+                        <img :src="imgCart" alt="Some image">
+                        <div class="product-desc">
+                            <p class="product-title">{{item.product_name}}</p>
+                            <p class="product-quantity">Количество: {{ item.quantity }}</p>
+                            <p class="product-single-price">{{ item.price }} за ед.</p>
+                        </div>
+                    </div>
+                    <div class="right-block">
+                        <p class="product-price">{{ item.quantity*item.price }} ₽</p>
+                        <button class="del-btn" @click="remove(item)">x</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <p>{{ searchLine }}</p>
-
-        <main>
-            <div class="goods-list">
-                <div class="goods-item" v-for="good in filteredGoods">
-                    <h3>{{ good.product_name }}</h3>
-                    <p>{{ good.price }}</p>
+        <div class="products">
+            <div class="product-item" v-for="product of filtered" :key="product.id_product">
+                <img :src="imgCatalog" alt="Some img">
+                <div class="desc">
+                    <h3>{{product.product_name}}</h3>
+                    <p>{{product.price}} ₽</p>
+                    <button class="buy-btn" @click="addProduct(product)">Купить</button>
                 </div>
             </div>
-        </main>
-
-        <div class="footer">
-            <form action="#" class="feedback">
-                <h2>Обратная связь</h2>
-                <div class="feedback-wrap">
-                    <div class="input-wrap">
-                        <input type="text" class="feedback-name" placeholder="Имя">
-                    </div>
-                    <div class="input-wrap">
-                        <input type="tel" class="feedback-phone" placeholder="Телефон">
-                    </div>
-                    <div class="input-wrap">
-                        <input type="email" class="feedback-mail" placeholder="E-mail">
-                    </div>
-                    <div class="input-wrap">
-                        <textarea name="name" rows="1" cols="30" class="feedback-text" placeholder="Введите сообщение"></textarea>
-                    </div>
-                    <button class="feedback-button">Отправить</button>
-                </div>
-                <p>* Все поля обязательны для заполнения</p>
-            </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
