@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>eShop</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
-    <div class="nav">
-        <button class="cartButton">Корзина</button>
-        <div class="goods-list">
+
+    <div id="app">
+        <div class="header">
+            <div class="logo">
+                Интернет-магазин
+            </div>
+            <search ref="search"></search>
+            <cart ref="cart"></cart>
         </div>
+
+        <products ref="products"></products>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue-search.js"></script>
+    <script src="vue-cart.js"></script>
+    <script src="vue-products.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>
-
-
