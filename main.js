@@ -265,4 +265,3 @@ const listContext = {
 
 let cart = new Cart();
 new ProductsList(cart);
-
