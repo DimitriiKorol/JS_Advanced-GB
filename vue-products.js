@@ -8,8 +8,8 @@ Vue.component('products', {
         }
     },
     methods: {
-        filter(){
-            let regexp = new RegExp(this.userSearch, 'i');
+        filter(value){
+            let regexp = new RegExp(value, 'i');
             this.filtered = this.products.filter(el => regexp.test(el.product_name));
         }
     },
@@ -32,12 +32,7 @@ Vue.component('product', {
     props: ['product', 'img'],
     data() {
       return {
-          /**
-           * Создали ссылку на API нашей корзины. Т.к. все компоненты у нас регистрируются в корневом экземпляре Vue,
-           * то мы легко можем получить доступ к ним используя свойство $root.
-           * $parent можно использовать для доступа к родительскому экземпляру из дочернего.
-           */
-          cartAPI: this.$root.$refs.cart, // добираемся до компонента корзины, чтобы далее использовать метод добавления
+          cartAPI: this.$root.$refs.cart,
       };
     },
 
