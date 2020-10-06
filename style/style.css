@@ -11,6 +11,47 @@ body {
   display: none !important;
 }
 
+
+.errModal {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errMsg {
+  background-color: red;
+  width: 500px;
+  padding: 25px;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.closeErrBtn {
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 96%;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
 .header {
   height: 100px;
   width: 100%;
