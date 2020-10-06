@@ -52,7 +52,6 @@ body{
     cursor: pointer;
 }
 
-
 .header{
     height: 100px;
     width: 100%;
@@ -142,6 +141,7 @@ body{
 }
 
 .product-bio{
+
     display: flex;
     justify-content: space-between;
 
@@ -157,6 +157,7 @@ body{
     font-size: 14px;
     font-weight: 700;
     color: #000;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -394,7 +395,7 @@ body{
     background-color: transparent;
     text-align: center;
     height: 50px;
-
+  
     p{
         color: red;
         font-family: inherit;
