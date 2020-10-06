@@ -1,0 +1,42 @@
+[
+    {
+        "time": "07 Oct 2020, 12:42:02 am",
+        "prod_name": "Ноутбук",
+        "action": "change"
+    },
+    {
+        "time": "07 Oct 2020, 12:46:11 am",
+        "prod_name": "Keyboard",
+        "action": "add"
+    },
+    {
+        "time": "07 Oct 2020, 12:46:22 am",
+        "prod_name": "Gamepad",
+        "action": "add"
+    },
+    {
+        "time": "07 Oct 2020, 12:46:30 am",
+        "prod_name": "Ноутбук",
+        "action": "add"
+    },
+    {
+        "time": "07 Oct 2020, 12:46:41 am",
+        "prod_name": "Мышка",
+        "action": "add"
+    },
+    {
+        "time": "07 Oct 2020, 12:47:38 am",
+        "prod_name": "Gamepad",
+        "action": "change"
+    },
+    {
+        "time": "07 Oct 2020, 12:48:21 am",
+        "prod_name": "Мышка",
+        "action": "add"
+    },
+    {
+        "time": "07 Oct 2020, 12:48:27 am",
+        "prod_name": "Мышка",
+        "action": "change"
+    }
+]
